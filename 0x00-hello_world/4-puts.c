@@ -2,10 +2,10 @@
 #include <string.h>
 
 /**
-*main - Main function of my project
+*main - Main function 
 *
 *
-*Return: return 0 everytime
+*Return: return 0 mean success
 */
 int main(void)
 {
