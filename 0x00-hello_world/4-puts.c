@@ -2,8 +2,10 @@
 #include <string.h>
 /**
  *main - opening a main for my first program in c
- * creating a simple script to show a sentence
- *Return - return value 0 to exit
+ *
+ *creating a simple script to show a sentence
+ *
+ *Return : return value 0 to exit
  */
 int main(void)
 {
