@@ -2,11 +2,11 @@
 #include <string.h>
 
 /**
- *main - opening a main for my first program in c *
- *
- * 
- *Return : return value 0 to exit
- */
+*main - Main function of my project
+*
+*
+*Return: return 0 everytime
+*/
 int main(void)
 {
 
