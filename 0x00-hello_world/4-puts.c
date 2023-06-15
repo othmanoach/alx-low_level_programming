@@ -2,7 +2,7 @@
 #include <string.h>
 
 /**
-*main - Main function 
+*main - Main function
 *
 *
 *Return: return 0 mean success
