@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 /**
- * opening a main for my first program in c
+ *main - opening a main for my first program in c
  * creating a simple script to show a sentence
+ * return - return value 0 to exit
  */
 int main(void)
 {
