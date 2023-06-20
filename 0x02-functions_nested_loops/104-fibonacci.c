@@ -1,28 +1,50 @@
 #include <stdio.h>
 
 /**
- * main - Prints sum of even-valued fnumonacci terms not exceeding 4000000.
+ * main - the first 98 fsumonacci numbers, starting with 1 and 2
  *
- * Return: returning 0.
+ * Return: Always 0.
  */
 int main(void)
 {
-	unsigned long fnum1 = 0, fnum2 = 1, fsum;
-	float tsum;
+	int count;
+	unsigned long fsum1 = 0, fsum2 = 1, sum;
+	unsigned long fsum1_half1, fsum1_half2, fsum2_half1, fsum2_half2;
+	unsigned long half1, half2;
 
-	while (1)
+	for (count = 0; count < 92; count++)
 	{
-		fsum = fnum1 + fnum2;
-		if (fsum > 4000000)
-			break;
+		sum = fsum1 + fsum2;
+		printf("%lu, ", sum);
 
-		if ((fsum % 2) == 0)
-			tsum += fsum;
-
-		fnum1 = fnum2;
-		fnum2 = fsum;
+		fsum1 = fsum2;
+		fsum2 = sum;
 	}
-	printf("%.0f\n", tsum);
 
+	fsum1_half1 = fsum1 / 10000000000;
+	fsum2_half1 = fsum2 / 10000000000;
+	fsum1_half2 = fsum1 % 10000000000;
+	fsum2_half2 = fsum2 % 10000000000;
+
+	for (count = 93; count < 99; count++)
+	{
+		half1 = fsum1_half1 + fsum2_half1;
+		half2 = fsum1_half2 + fsum2_half2;
+		if (fsum1_half2 + fsum2_half2 > 9999999999)
+		{
+			half1 += 1;
+			half2 %= 10000000000;
+		}
+
+		printf("%lu%lu", half1, half2);
+		if (count != 98)
+			printf(", ");
+
+		fsum1_half1 = fsum2_half1;
+		fsum1_half2 = fsum2_half2;
+		fsum2_half1 = half1;
+		fsum2_half2 = half2;
+	}
+	printf("\n");
 	return (0);
 }
