@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - Prints the sum of even-valued fnumonacci, terms not exceeding 4000000.
+ * main - Prints the sum of even-valued fnumonacci terms not exceeding 4000000
  *
  * Return: returning 0.
  */
