@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 /**
- * @ac: argument count
  * argstostr - concatenates all the arguments of a program
+ * @ac: argument count.
  * @av: the argument vector
  * Return: the pointer of an array of characters
  */
