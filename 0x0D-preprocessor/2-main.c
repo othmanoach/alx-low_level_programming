@@ -5,8 +5,8 @@
  * RETURN : 0 mean success
 */
 
-int main ()
+int main(void)
 {
-	printf("%s", __file__);
+	printf("%s\n", __FILE__);
 	return 0;
 }
