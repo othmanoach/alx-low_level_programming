@@ -50,7 +50,7 @@ void print_magic(unsigned char *e_ident)
 {
 	int index;
 
-	printf("  Magic:   ");
+	printf(" Magic: ");
 
 	for (index = 0; index < EI_NIDENT; index++)
 	{
@@ -69,7 +69,7 @@ void print_magic(unsigned char *e_ident)
  */
 void print_class(unsigned char *e_ident)
 {
-	printf("  Class:                             ");
+	printf(" Class: ");
 
 	switch (e_ident[EI_CLASS])
 	{
@@ -93,7 +93,7 @@ void print_class(unsigned char *e_ident)
  */
 void print_data(unsigned char *e_ident)
 {
-	printf("  Data:                              ");
+	printf(" Data: ");
 
 	switch (e_ident[EI_DATA])
 	{
@@ -112,13 +112,13 @@ void print_data(unsigned char *e_ident)
 }
 
 /**
- * print_version - Prints the version of an ELF header.
- * @e_ident: A pointer to an array containing the ELF version.
- */
+ *  * print_version - Prints the version of an ELF header.
+ *   * @e_ident: A pointer to an array containing the ELF version.
+ *    */
 void print_version(unsigned char *e_ident)
 {
-	printf("  Version:                           %d",
-	       e_ident[EI_VERSION]);
+	 printf(" Version: %d",
+			  e_ident[EI_VERSION]);
 
 	switch (e_ident[EI_VERSION])
 	{
@@ -137,7 +137,7 @@ void print_version(unsigned char *e_ident)
  */
 void print_osabi(unsigned char *e_ident)
 {
-	printf("  OS/ABI:                            ");
+	printf(" OS/ABI: ");
 
 	switch (e_ident[EI_OSABI])
 	{
@@ -182,8 +182,8 @@ void print_osabi(unsigned char *e_ident)
  */
 void print_abi(unsigned char *e_ident)
 {
-	printf("  ABI Version:                       %d\n",
-	       e_ident[EI_ABIVERSION]);
+	printf(" ABI Version: %d\n",
+		e_ident[EI_ABIVERSION]);
 }
 
 /**
@@ -195,8 +195,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 {
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 		e_type >>= 8;
-
-	printf("  Type:                              ");
+	printf(" Type: ");
 
 	switch (e_type)
 	{
@@ -227,7 +226,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
  */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
-	printf("  Entry point address:               ");
+	printf(" Entry point address: ");
 
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 	{
@@ -235,7 +234,6 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 			  ((e_entry >> 8) & 0xFF00FF);
 		e_entry = (e_entry << 16) | (e_entry >> 16);
 	}
-
 	if (e_ident[EI_CLASS] == ELFCLASS32)
 		printf("%#x\n", (unsigned int)e_entry);
 
@@ -261,14 +259,14 @@ void close_elf(int elf)
 
 /**
  * main - Displays the information contained in the
- *        ELF header at the start of an ELF file.
+ * ELF header at the start of an ELF file.
  * @argc: The number of arguments supplied to the program.
  * @argv: An array of pointers to the arguments.
  *
  * Return: 0 on success.
  *
  * Description: If the file is not an ELF File or
- *              the function fails - exit code 98.
+ * the function fails - exit code 98.
  */
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
@@ -310,55 +308,5 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 
 	free(header);
 	close_elf(o);
-	return (0);
-}
-
-/**
- * check100 - checks that file descriptors were closed properly
- * @check: checks if true or false
- * @fd: file descriptor
- * Return: return void
- */
-void check100(int check, int fd)
-{
-	if (check == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		exit(100);
-	}
-}
-/**
- * main - opies the content of a file to another file.
- * @argc: number of arguments passed
- * @argv: array of pointers to the arguments
- * Return: 0 on success
- */
-int main(int argc, char *argv[])
-{
-	int fd_from, fd_to, close_to, close_from;
-	ssize_t lenr, lenw;
-	char buffer[1024];
-	mode_t file_perm;
-
-	check97(argc);
-	fd_from = open(argv[1], O_RDONLY);
-	check98((ssize_t)fd_from, argv[1], -1, -1);
-	file_perm = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
-	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, file_perm);
-	check99((ssize_t)fd_to, argv[2], fd_from, -1);
-	lenr = 1024;
-	while (lenr == 1024)
-	{
-		lenr = read(fd_from, buffer, 1024);
-		check98(lenr, argv[1], fd_from, fd_to);
-		lenw = write(fd_to, buffer, lenr);
-		if (lenw != lenr)
-			lenw = -1;
-		check99(lenw, argv[2], fd_from, fd_to);
-	}
-	close_to = close(fd_to);
-	close_from = close(fd_from);
-	check100(close_to, fd_to);
-	check100(close_from, fd_from);
 	return (0);
 }
