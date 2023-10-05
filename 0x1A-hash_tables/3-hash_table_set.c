@@ -1,11 +1,12 @@
 #include "hash_tables.h"
 
 /**
- * create_and_add_node - malloc, set values, and insert node
+ * create_and_add_node - malloc, set values, and insert node into hash table
+ * @ht: hash table
  * @key: key; can't be empty string
  * @value: value
  * @idx: index to insert in at hash table
- * Return: 1 success, 0 fail
+ * Return: 1 if success, 0 if fail
  */
 int create_and_add_node(table_t *ht, const char *key, const char *value,
 			ulint idx)
@@ -50,10 +51,14 @@ int create_and_add_node(table_t *ht, const char *key, const char *value,
  * @ht: hash table
  * @key: key; can't be empty string
  * @value: value
- * Return: 1 success, 0 fail
+ * Return: 1 if success, 0 if fail
  */
 int hash_table_set(table_t *ht, const char *key, const char *value)
 {
+	/* get index */
+	/* if key already exists, update value and return */
+	/* else create node */
+	/* set ht idx ptr to node; else add node to front if collision */
 
 	ulint idx;
 	node_t *node = NULL;
