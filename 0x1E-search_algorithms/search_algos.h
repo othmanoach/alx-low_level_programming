@@ -30,6 +30,9 @@ __local void print_array(int *array, int start, int stop)
 	printf("%d\n", array[i]);
 }
 
+/**
+ * singly linked list node structure
+*/ 
 typedef struct skiplist_s {
     int n;
     struct skiplist_s *next;
